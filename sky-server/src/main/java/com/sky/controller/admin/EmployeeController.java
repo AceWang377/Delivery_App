@@ -97,4 +97,12 @@ public class EmployeeController {
         return Result.success(pageResult);
     }
 
+    @PostMapping("/status/{status}")
+    @ApiOperation("Active or not active")
+    public Result startOrStop(@PathVariable Integer status, long id) {
+        log.info("Active or not active account: {}, {}", status, id);
+        employeeService.startOrStop(status, id);
+        return Result.success();
+    }
+
 }
